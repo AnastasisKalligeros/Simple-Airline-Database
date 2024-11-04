@@ -1,0 +1,11 @@
+SELECT t.passenger_name,Book.book_date
+FROM "Tickets" as t 
+INNER JOIN "Flights" as f
+ON t.flight_id=f.id 
+INNER JOIN "Book" as Book
+ON Book.book_ref=t.book_ref
+INNER JOIN "Ticket_sections" as t2
+ON t2.ticket_number=t.ticket_no
+WHERE f.flight_number='PG34' 
+AND f.actual_departure_time < CAST((CURRENT_TIMESTAMP-INTERVAL '1 DAY') AS text)
+AND t2.seat_no='21D'

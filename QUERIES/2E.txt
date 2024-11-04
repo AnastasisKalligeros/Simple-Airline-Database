@@ -1,0 +1,6 @@
+SELECT f.arrival_airport,a.airport_city,COUNT(a.airport_city)
+FROM flights as f 
+INNER JOIN airport as a 
+ON a.airport_name=f.arrival_airport 
+GROUP BY f.arrival_airport,a.airport_city
+ORDER BY COUNT(a.airport_city) desc LIMIT 5;

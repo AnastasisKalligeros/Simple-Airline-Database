@@ -1,0 +1,6 @@
+SELECT t.passenger_name,sum(f.distance) FROM tickets as t
+INNER JOIN flights as f
+ON f.id=t.flight_id
+WHERE actual_departure_time like '2022%'
+GROUP BY (t.passenger_name)
+ORDER BY (sum (f.distance)) desc LIMIT 5;

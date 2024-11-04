@@ -1,0 +1,9 @@
+SELECT
+(SELECT a.capacity
+FROM "Aircrafts_data" as a
+INNER JOIN "Flights" as f
+ON f.aircraft_code=a.aircraft_code
+WHERE f.flight_number='PG34')-
+(SELECT COUNT (passenger_name)
+FROM "Tickets"
+WHERE flight_id IN (SELECT id FROM "Flights" WHERE flight_number='PG34')) as available_seats
